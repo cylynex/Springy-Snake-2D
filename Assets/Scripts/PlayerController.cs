@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
 
     Rigidbody2D rb;
+    PlayerData playerData;
 
     [SerializeField] float bounceAmount;
     [SerializeField] float moveSpeed;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         cam = Camera.main;
         audio = GetComponent<AudioSource>();
+        playerData = FindObjectOfType<PlayerData>();
     }
 
     private void Update() {
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 
     void CheckDie() {
         if (!gameOver) {
-            if (transform.position.y < (cam.transform.position.y - 6)) {
+            if (transform.position.y < (cam.transform.position.y - 5.5)) {
                 Lose();
             }
         }
@@ -139,6 +141,14 @@ public class PlayerController : MonoBehaviour {
         winScreen.SetActive(true);
         gameOver = true;
         audio.PlayOneShot(winSound);
+        playerData.totalJumps += jumpCounter;
+        
+        int levelToUnlock = playerData.currentLevelIndex + 1;
+        if (!playerData.world1Unlocks.Contains(levelToUnlock)) {
+            playerData.world1Unlocks.Add(levelToUnlock);
+        }
+        
+        playerData.GetComponent<Save>().SaveGame();
     }
 
 }

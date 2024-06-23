@@ -19,4 +19,8 @@ public class LoadLevel : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void LoadWorld(World world) {
+        
+    }
+
 }

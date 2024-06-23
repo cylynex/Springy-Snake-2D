@@ -9,18 +9,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: dcf7a937abfe82442854e183f76b1b9b
   - enabled: 1
-    path: Assets/Scenes/Level_1.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Level_2.unity
-    guid: d8644be4564a53345a576a2e1d4f3dad
-  - enabled: 1
-    path: Assets/Scenes/Directions.unity
-    guid: 552dc50131afe3d488bdbf407cdd8bb4
+    path: Assets/Scenes/Statistics.unity
+    guid: 431559e2e5bd13841a15001d700ec36d
   - enabled: 1
     path: Assets/Scenes/World_Selector.unity
     guid: 886894ee8b6ae3f4f984868bfb17cf6d
   - enabled: 1
     path: Assets/Scenes/Level_Select.unity
     guid: 77f7ea02d80966f428bce92170e18859
+  - enabled: 1
+    path: Assets/Scenes/SnowWorld_Level_1.unity
+    guid: 8ac9349dd0230ac40b65cd0e6bbc764d
+  - enabled: 1
+    path: Assets/Scenes/SnowWorld_Level_2.unity
+    guid: 5389cdc1811d2254b9de133c8e2cc88f
+  - enabled: 1
+    path: Assets/Scenes/SnowWorld_Level_3.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Directions.unity
+    guid: 552dc50131afe3d488bdbf407cdd8bb4
   m_configObjects: {}
