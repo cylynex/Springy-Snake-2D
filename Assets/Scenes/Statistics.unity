@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalJumps: {fileID: 138697450}
-  world1: {fileID: 0}
+  world1: {fileID: 164229403}
 --- !u!1 &2040338760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,15 +1399,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.875
+      value: 1.3280437
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.350261
+      value: 3.7895365
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.350261
+      value: 3.7895365
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1439,11 +1439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -177
+      value: -136
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 99
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 3825391893640509810, guid: 42de8eaa8c409444b856b00641866d38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

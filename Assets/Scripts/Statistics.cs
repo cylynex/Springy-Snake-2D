@@ -20,8 +20,7 @@ public class Statistics : MonoBehaviour {
         
         string w1p = "";
         for (int i = 0; i < playerData.world1Unlocks.Count; i++) {
-            print(playerData.world1Unlocks[i]);
-            w1p += playerData.world1Unlocks[i];
+            w1p += playerData.world1Unlocks[i] + ", ";
         }
         world1.text = "World 1 Progress: " + w1p;
     }

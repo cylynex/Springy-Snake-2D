@@ -22,7 +22,6 @@ public class LevelLockManager : MonoBehaviour {
             print(world.levels[i]);
             GameObject currentLevel = Instantiate(levelItemPrefab, transform);
             Button thisButton = currentLevel.GetComponentInChildren<Button>();
-            print("adding " + i + " world level " + world.levels[i]);
             int thisIndex = i;
             thisButton.onClick.AddListener(() => ChooseLevel(thisIndex, world.levels[thisIndex]));
         }
@@ -36,16 +35,16 @@ public class LevelLockManager : MonoBehaviour {
                 if (playerData.world1Unlocks.Contains(levelIndex)) {
                     // Disable lock icon and enable button
                     levelSelector.GetChild(2).gameObject.SetActive(false);
-                    print("level " + levelIndex + " is already unlocked.");
+                    //print("level " + levelIndex + " is already unlocked.");
                 }
                 else {
                     // Leave in default, locked state, remove button
-                    print("level " + levelIndex + " is not unlocked yet");
+                    //print("level " + levelIndex + " is not unlocked yet");
                     levelSelector.GetChild(3).gameObject.SetActive(false);
                 }
             } else {
                 // Disable lock icon and enable button
-                print("level " + levelIndex + " is already unlocked.");
+                //print("level " + levelIndex + " is already unlocked.");
                 levelSelector.GetChild(2).gameObject.SetActive(false);
             }
 
@@ -55,7 +54,6 @@ public class LevelLockManager : MonoBehaviour {
     }
 
     private void ChooseLevel(int levelSaveID, string levelName) {
-        print("loading level " + levelName + " of id " + levelSaveID);
         playerData.currentLevelIndex = levelSaveID;
         SceneManager.LoadScene(levelName);
     }
