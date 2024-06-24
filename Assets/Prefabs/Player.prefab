@@ -148,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.490537}
+  m_Offset: {x: 0, y: 0.0021666884}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.018925995}
+  m_Size: {x: 1, y: 1.0043334}
   m_EdgeRadius: 0
 --- !u!82 &282268169786490995
 AudioSource:
@@ -280,8 +280,8 @@ MonoBehaviour:
   health: 3
   healthBar: {fileID: 0}
   dustPuff: {fileID: 0}
+  enemyHitParticles: {fileID: 3152950449636021625, guid: b82c6c6e7cf075548b73db04ce9137d7, type: 3}
   shield1: 0
-  shield1FX: {fileID: 7626298355848856226, guid: 11897233acb10a946af84b20da8c4d84, type: 3}
   gameRunning: 0
   gameOver: 0
   jumpCounter: 0

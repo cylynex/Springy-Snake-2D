@@ -28,7 +28,10 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] int health = 3;
     [SerializeField] Slider healthBar;
+
+    [Header("FX")]
     [SerializeField] ParticleSystem dustPuff;
+    [SerializeField] ParticleSystem enemyHitParticles;
 
     [Header("Powerups")]
     public bool shield1 = false;
@@ -69,6 +72,11 @@ public class PlayerController : MonoBehaviour {
             }
 
             CheckDie();
+
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                print("blow up");
+                enemyHitParticles.Play();
+            }
         }
     }
 
@@ -108,10 +116,12 @@ public class PlayerController : MonoBehaviour {
         else if (layerName == "Enemy") {
             if (shield1) {
                 shield1 = false;
-                ParticleSystem shieldFX = GetComponentInChildren<ParticleSystem>();
+                ParticleSystem shieldFX = GetComponentInChildren<ParticleSystem>(); // getting ahold of the wrong particle system, need to reference this better
                 Destroy(shieldFX.gameObject);
+                enemyHitParticles.Play();
             }
             else {
+                Instantiate(enemyHitParticles, transform);
                 TakeDamage();
             }
         }
