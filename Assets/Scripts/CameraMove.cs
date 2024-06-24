@@ -12,7 +12,7 @@ public class CameraMove : MonoBehaviour {
     }
 
     private void Update() {
-        if (!pc.gameOver) {
+        if (pc.gameRunning) {
             transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
         }
     }

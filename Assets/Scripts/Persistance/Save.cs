@@ -9,9 +9,14 @@ using UnityEngine.TextCore.Text;
 [System.Serializable]
 public class SavedProfile {
 
-    // Jump Counter
+    // Progression Data
     public int totalJumps;
     public List<int> world1Unlocks = new List<int>();
+    public List<int> world1Stars = new List<int>();
+
+    // Long Term Data
+    public int totalStarsEarned;
+
 }
 
 public class Save : MonoBehaviour {
@@ -34,6 +39,9 @@ public class Save : MonoBehaviour {
 
         profile.totalJumps = playerData.totalJumps;
         profile.world1Unlocks = playerData.world1Unlocks;
+        profile.world1Stars = playerData.world1Stars;
+
+        profile.totalStarsEarned = playerData.totalStarsEarned;
 
         // The actual write
         BinaryFormatter bf = new BinaryFormatter();

@@ -13,17 +13,25 @@ public class LevelLockManager : MonoBehaviour {
 
     private void Start() {
 
-
-
         playerData = FindObjectOfType<PlayerData>();
 
         // Instantiate the level selectors
         for (int i = 0; i < world.levels.Count; i++) {
-            print(world.levels[i]);
             GameObject currentLevel = Instantiate(levelItemPrefab, transform);
             Button thisButton = currentLevel.GetComponentInChildren<Button>();
             int thisIndex = i;
             thisButton.onClick.AddListener(() => ChooseLevel(thisIndex, world.levels[thisIndex]));
+
+            // Setup the stars
+            print("stars for this level : " + playerData.world1Stars[thisIndex]);
+            switch (playerData.world1Stars[thisIndex]) {
+                case 0: currentLevel.GetComponent<LevelSelector>().SetStar(0); break;
+                case 1: currentLevel.GetComponent<LevelSelector>().SetStar(1); break;
+                case 2: currentLevel.GetComponent<LevelSelector>().SetStar(2); break;
+                case 3: currentLevel.GetComponent<LevelSelector>().SetStar(3); break;
+                default: Debug.Log("star error"); break;
+            }
+
         }
 
         // Setup the locks
@@ -55,6 +63,7 @@ public class LevelLockManager : MonoBehaviour {
 
     private void ChooseLevel(int levelSaveID, string levelName) {
         playerData.currentLevelIndex = levelSaveID;
+        playerData.currentLevelData = playerData.GetComponent<LevelData>().world1Levels[levelSaveID];
         SceneManager.LoadScene(levelName);
     }
 }

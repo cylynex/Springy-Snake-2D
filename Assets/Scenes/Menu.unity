@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 222456916}
   - component: {fileID: 222456919}
   - component: {fileID: 222456920}
+  - component: {fileID: 222456921}
   m_Layer: 0
   m_Name: Persistant Data
   m_TagString: Untagged
@@ -323,6 +324,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profile:
     totalJumps: 0
+    world1Unlocks: 
+    world1Stars: 
+    totalStarsEarned: 0
   playerData: {fileID: 0}
 --- !u!114 &222456917
 MonoBehaviour:
@@ -336,7 +340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3950985b3f8344085e1bc24a7f3179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevelIndex: 0
   totalJumps: 0
+  world1Unlocks: 
+  world1Stars: 
+  totalStarsEarned: 0
 --- !u!114 &222456918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +466,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &222456921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222456914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfd3c0e3f4cfe7429cb63639300deca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world1Levels:
+  - {fileID: 11400000, guid: 39e6b0ba27d7a924bbe324b36997a890, type: 2}
 --- !u!1 &285271934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -124.609375, y: 100.46875}
+  m_AnchoredPosition: {x: -147, y: 115}
   m_SizeDelta: {x: 249.22919, y: 200.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337862710
@@ -1122,7 +1144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v9
+  m_text: v10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
   m_sharedMaterial: {fileID: 4041514310467126790, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}

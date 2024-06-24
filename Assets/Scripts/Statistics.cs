@@ -10,6 +10,7 @@ public class Statistics : MonoBehaviour {
 
     [SerializeField] TMP_Text totalJumps;
     [SerializeField] TMP_Text world1;
+    [SerializeField] TMP_Text totalStars;
 
     private void Awake() {
         playerData = FindObjectOfType<PlayerData>();
@@ -23,6 +24,8 @@ public class Statistics : MonoBehaviour {
             w1p += playerData.world1Unlocks[i] + ", ";
         }
         world1.text = "World 1 Progress: " + w1p;
+
+        totalStars.text = "Total Stars: "+playerData.totalStarsEarned.ToString();
     }
 
 }
