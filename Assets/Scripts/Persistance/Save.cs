@@ -17,6 +17,9 @@ public class SavedProfile {
     // Long Term Data
     public int totalStarsEarned;
 
+    // Power Ups
+    public int powerUpShield1;
+
 }
 
 public class Save : MonoBehaviour {
@@ -41,7 +44,11 @@ public class Save : MonoBehaviour {
         profile.world1Unlocks = playerData.world1Unlocks;
         profile.world1Stars = playerData.world1Stars;
 
+        // Long Term Data
         profile.totalStarsEarned = playerData.totalStarsEarned;
+
+        // Power Ups
+
 
         // The actual write
         BinaryFormatter bf = new BinaryFormatter();

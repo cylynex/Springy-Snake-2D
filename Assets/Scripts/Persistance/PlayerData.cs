@@ -18,6 +18,9 @@ public class PlayerData : MonoBehaviour {
     [Header("Long Term Data")]
     public int totalStarsEarned = 0;
 
+    [Header("Powerups")]
+    public int powerUpShield1 = 0;
+
     private void Update() {
         
     }

@@ -14,6 +14,7 @@ public class GameStartPanel : MonoBehaviour {
     [SerializeField] TMP_Text star1Text;
     [SerializeField] TMP_Text star2Text;
     [SerializeField] TMP_Text star3Text;
+    [SerializeField] TMP_Text[] starText;
 
     private void Awake() {
         Time.timeScale = 0;
@@ -27,9 +28,28 @@ public class GameStartPanel : MonoBehaviour {
     }
 
     void SetupWelcomeScreen() {
-        star1Text.text = "1 Star: Make it to the red platform";
-        star2Text.text = "T2 GOESHERE";
-        star3Text.text - "T3 GOES HERE";
+
+        // First star just for beating the board
+        int locationIndex = 0;
+        starText[locationIndex].text = "Make it to the red platform";
+        locationIndex++;
+
+        if (currentLevel.timer1) {
+            starText[locationIndex].text = "Complete the board in less than " + currentLevel.timer1Time + " seconds";
+            locationIndex++;
+        }
+
+        if (currentLevel.timer2) {
+            starText[locationIndex].text = "Complete the board in less than " + currentLevel.timer2Time + " seconds";
+            locationIndex++;
+        }
+
+        if (currentLevel.maxBounces) {
+            starText[locationIndex].text = "Complete the board in less than " + currentLevel.maxBounceCount + " jumps";
+        }
+
+        
+        
     }
 
     public void StartGame() {

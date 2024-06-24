@@ -6,10 +6,14 @@ using UnityEngine;
 public class Level : ScriptableObject {
 
     [Header("Timer Options")]
-    public bool timed2star;
-    public float timer2star;
+    public bool timer1;
+    public float timer1Time;
 
-    public bool timed3star;
-    public float timer3star;
+    public bool timer2;
+    public float timer2Time;
+
+    [Header("Bounce Options")]
+    public bool maxBounces;
+    public int maxBounceCount;
 
 }

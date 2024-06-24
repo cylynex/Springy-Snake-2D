@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0d608f81bee99941b7af54077108db7, type: 3}
-  m_Name: SnowWorld 1
+  m_Name: Snow2
   m_EditorClassIdentifier: 
-  timed2star: 1
-  timer2star: 10
-  timed3star: 0
-  timer3star: 0
+  timer1: 1
+  timer1Time: 10
+  timer1Text: Beat the board in 10 seconds
+  timer2: 0
+  timer2Time: 8
+  timer2Text: Beat the board in 8 seconds
+  maxBounces: 1
+  maxBounceCount: 11

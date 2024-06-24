@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevelIndex: 0
+  currentLevelData: {fileID: 0}
   totalJumps: 0
   world1Unlocks: 
   world1Stars: 
@@ -480,6 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   world1Levels:
   - {fileID: 11400000, guid: 39e6b0ba27d7a924bbe324b36997a890, type: 2}
+  - {fileID: 11400000, guid: 6dfccb1d1a4364f45940cee42d1e946e, type: 2}
 --- !u!1 &285271934
 GameObject:
   m_ObjectHideFlags: 0

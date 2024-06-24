@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     PlayerData playerData;
     GameObject gameConditionals;
     Timer timer;
+    Level level;
 
     [SerializeField] float bounceAmount;
     [SerializeField] float moveSpeed;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour {
         audio = GetComponent<AudioSource>();
         playerData = FindObjectOfType<PlayerData>();
         timer = GetComponent<Timer>();
+        level = playerData.currentLevelData;
     }
 
     private void Update() {
@@ -103,20 +105,6 @@ public class PlayerController : MonoBehaviour {
             Destroy(other.gameObject);
             TakeDamage();
         }
-        /*
-        else if (other.gameObject.CompareTag("Trap")) {
-            if (rb.velocity.y <= 0) {
-                TakeDamage();
-            }
-        }
-
-        else if (other.gameObject.CompareTag("Spider")) {
-            if (rb.velocity.y <= 0) {
-                TakeDamage();
-                Destroy(other.gameObject.transform.parent.gameObject);
-            }
-        }
-        */
     }
 
     void Bounce() {
@@ -157,11 +145,37 @@ public class PlayerController : MonoBehaviour {
             playerData.world1Unlocks.Add(levelToUnlock);
         }
 
+        int wonStars = 1;
+
+        // Win Conditionals - TODO break into separate methods
+        if (level.timer1) {
+            if (timer.timer < level.timer1Time) {
+                print("earned another star for beating timer1");
+                wonStars++;
+            }
+        }
+
+        if (level.timer2) {
+            if (timer.timer < level.timer2Time) {
+                print("earned another star for beating timer2");
+                wonStars++;
+            }
+        }
+
+        if (level.maxBounces) {
+            if (bounceAmount < level.maxBounceCount) {
+                wonStars++;
+            }
+        }
+
         // Timer Stuff - TODO - this will all come from an object defining level objectives
-        if (timer.timer <= 10) { wonStars = 3; }
+        // DEPRECATED
+        /*if (timer.timer <= 10) { wonStars = 3; }
         else if (timer.timer <= 12) { wonStars = 2; }
         else { wonStars = 1; }
+        */
 
+        // Add or update stars in storage
         if (playerData.world1Stars[playerData.currentLevelIndex] < wonStars) {
             print("earned some new stars tally em up - "+wonStars);
             int newStars = wonStars - playerData.world1Stars[playerData.currentLevelIndex];
