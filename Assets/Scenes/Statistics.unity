@@ -448,6 +448,7 @@ MonoBehaviour:
     world1Unlocks: 
     world1Stars: 
     totalStarsEarned: 0
+    powerUpShield1: 0
   playerData: {fileID: 0}
 --- !u!114 &222456917
 MonoBehaviour:
@@ -462,10 +463,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevelIndex: 0
+  currentLevelData: {fileID: 0}
   totalJumps: 0
   world1Unlocks: 
   world1Stars: 
   totalStarsEarned: 0
+  powerUpShield1: 0
 --- !u!114 &222456918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,8 +746,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: STATISTICS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
-  m_sharedMaterial: {fileID: 4041514310467126790, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
