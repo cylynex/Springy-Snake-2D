@@ -48,7 +48,7 @@ public class Save : MonoBehaviour {
         profile.totalStarsEarned = playerData.totalStarsEarned;
 
         // Power Ups
-
+        profile.powerUpShield1 = playerData.powerUpShield1;
 
         // The actual write
         BinaryFormatter bf = new BinaryFormatter();

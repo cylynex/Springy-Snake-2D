@@ -280,6 +280,8 @@ MonoBehaviour:
   health: 3
   healthBar: {fileID: 0}
   dustPuff: {fileID: 0}
+  shield1: 0
+  shield1FX: {fileID: 7626298355848856226, guid: 11897233acb10a946af84b20da8c4d84, type: 3}
   gameRunning: 0
   gameOver: 0
   jumpCounter: 0

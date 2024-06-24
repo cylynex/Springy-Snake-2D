@@ -15,12 +15,14 @@ public class GameStartPanel : MonoBehaviour {
     [SerializeField] TMP_Text star2Text;
     [SerializeField] TMP_Text star3Text;
     [SerializeField] TMP_Text[] starText;
+    [SerializeField] GameObject powerUpPanel;
 
     private void Awake() {
         Time.timeScale = 0;
         playerController = FindObjectOfType<PlayerController>();
         playerData = FindObjectOfType<PlayerData>();
         currentLevel = playerData.currentLevelData;
+        
     }
 
     private void Start() {
@@ -48,13 +50,18 @@ public class GameStartPanel : MonoBehaviour {
             starText[locationIndex].text = "Complete the board in less than " + currentLevel.maxBounceCount + " jumps";
         }
 
-        
-        
+        // Power Ups!!
+        int powerUps = 0;
+        if (playerData.powerUpShield1 > 0) {
+            print("you have a shield you can use");
+            powerUps++;
+        }
     }
 
     public void StartGame() {
         Time.timeScale = 1;
         playerController.gameRunning = true;
+        powerUpPanel.SetActive(false);
         gameObject.SetActive(false);
     }
 }

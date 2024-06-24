@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Slider healthBar;
     [SerializeField] ParticleSystem dustPuff;
 
+    [Header("Powerups")]
+    public bool shield1 = false;
+
+
     // Stars
     int wonStars = 0;
 
@@ -102,10 +106,17 @@ public class PlayerController : MonoBehaviour {
         }
 
         else if (layerName == "Enemy") {
-            Destroy(other.gameObject);
-            TakeDamage();
+            if (shield1) {
+                shield1 = false;
+                ParticleSystem shieldFX = GetComponentInChildren<ParticleSystem>();
+                Destroy(shieldFX.gameObject);
+            }
+            else {
+                TakeDamage();
+            }
         }
     }
+
 
     void Bounce() {
         audio.PlayOneShot(bounceSound);
@@ -167,13 +178,6 @@ public class PlayerController : MonoBehaviour {
                 wonStars++;
             }
         }
-
-        // Timer Stuff - TODO - this will all come from an object defining level objectives
-        // DEPRECATED
-        /*if (timer.timer <= 10) { wonStars = 3; }
-        else if (timer.timer <= 12) { wonStars = 2; }
-        else { wonStars = 1; }
-        */
 
         // Add or update stars in storage
         if (playerData.world1Stars[playerData.currentLevelIndex] < wonStars) {

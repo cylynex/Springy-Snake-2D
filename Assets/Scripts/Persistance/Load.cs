@@ -37,13 +37,15 @@ public class Load : MonoBehaviour {
             // Load Data
             playerData.totalJumps = loadedProfile.totalJumps;  // Overall total jumps on file
 
-            // World 1 unlocks
+            // World 1
             playerData.world1Unlocks = loadedProfile.world1Unlocks;
-
-            // World 1 Stars
             playerData.world1Stars = loadedProfile.world1Stars;
 
+            // Long Term Data
             playerData.totalStarsEarned = loadedProfile.totalStarsEarned;
+
+            // Power Ups
+            playerData.powerUpShield1 = loadedProfile.powerUpShield1;
         }
     }
 
