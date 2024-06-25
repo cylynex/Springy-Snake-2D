@@ -16,4 +16,7 @@ public class Level : ScriptableObject {
     public bool maxBounces;
     public int maxBounceCount;
 
+    [Header("Sound")]
+    public AudioClip backgroundMusic;
+
 }

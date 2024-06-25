@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour {
         playerData = FindObjectOfType<PlayerData>();
         level = playerData.currentLevelData;
         timer = GetComponent<Timer>();
+        playerData.gameObject.GetComponent<AudioSource>().clip = level.backgroundMusic;
+        playerData.gameObject.GetComponent<AudioSource>().Play();
     }
 
     public void StartGame() {
@@ -36,6 +38,7 @@ public class GameController : MonoBehaviour {
         playerController.FreezePlayer();
         loseScreen.SetActive(true);
         gameRunning = false;
+        playerData.gameObject.GetComponent<AudioSource>().Stop();
         audio.PlayOneShot(loseSound);
     }
 
@@ -43,6 +46,7 @@ public class GameController : MonoBehaviour {
         playerController.FreezePlayer();
         winScreen.SetActive(true);
         gameRunning = false;
+        playerData.gameObject.GetComponent<AudioSource>().Stop();
         audio.PlayOneShot(winSound);
         playerData.totalJumps += playerController.jumpCounter;
 

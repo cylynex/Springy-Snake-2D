@@ -14,6 +14,10 @@ public class LevelLockManager : MonoBehaviour {
     private void Start() {
 
         playerData = FindObjectOfType<PlayerData>();
+        if (playerData.gameObject.GetComponent<AudioSource>().isPlaying == false) {
+            playerData.gameObject.GetComponent<AudioSource>().clip = playerData.menuBackgroundMusic;
+            playerData.gameObject.GetComponent<AudioSource>().Play();
+        }
 
         // Instantiate the level selectors
         for (int i = 0; i < world.levels.Count; i++) {

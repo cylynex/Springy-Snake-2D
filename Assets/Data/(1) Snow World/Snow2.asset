@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer1: 1
   timer1Time: 10
-  timer1Text: Beat the board in 10 seconds
   timer2: 0
   timer2Time: 8
-  timer2Text: Beat the board in 8 seconds
   maxBounces: 1
   maxBounceCount: 11
+  backgroundMusic: {fileID: 8300000, guid: 29cde16d7f45bc34eb9a22fba6521c14, type: 3}

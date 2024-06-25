@@ -18,3 +18,4 @@ MonoBehaviour:
   timer2Time: 8
   maxBounces: 1
   maxBounceCount: 10
+  backgroundMusic: {fileID: 8300000, guid: 29cde16d7f45bc34eb9a22fba6521c14, type: 3}

@@ -348,6 +348,7 @@ MonoBehaviour:
   world1Stars: 
   totalStarsEarned: 0
   powerUpShield1: 0
+  menuBackgroundMusic: {fileID: 8300000, guid: 78b9d145610299e42ad75fe212e24920, type: 3}
 --- !u!114 &222456918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,9 +1152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'v.12
-
-'
+  m_text: v.13
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
   m_sharedMaterial: {fileID: 4041514310467126790, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}

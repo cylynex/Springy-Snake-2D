@@ -21,6 +21,9 @@ public class PlayerData : MonoBehaviour {
     [Header("Powerups")]
     public int powerUpShield1 = 0;
 
+    [Header("Static Data")]
+    public AudioClip menuBackgroundMusic;
+
     private void Update() {
         
     }
