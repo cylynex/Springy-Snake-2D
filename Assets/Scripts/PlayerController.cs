@@ -7,25 +7,26 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
+    // References
+    [Header("References")]
     Rigidbody2D rb;
     PlayerData playerData;
-    GameObject gameConditionals;
-    Timer timer;
-    Level level;
+    Camera cam;
+    GameController gameController;
 
+    // Movement
+    private float bumperLeft = -2.5f;
+    private float bumperRight = 2.5f;
+
+    [Header("Configurable")]
     [SerializeField] float bounceAmount;
     [SerializeField] float moveSpeed;
-    Camera cam;
     
-    [SerializeField] GameObject loseScreen;
-    [SerializeField] GameObject winScreen;
-
     [Header("Sound")]
     [SerializeField] AudioSource audio;
     [SerializeField] AudioClip bounceSound;
-    [SerializeField] AudioClip loseSound;
-    [SerializeField] AudioClip winSound;
 
+    [Header("Health")]
     [SerializeField] int health = 3;
     [SerializeField] Slider healthBar;
 
@@ -36,66 +37,43 @@ public class PlayerController : MonoBehaviour {
     [Header("Powerups")]
     public bool shield1 = false;
 
-
-    // Stars
-    int wonStars = 0;
-
-    private float bumperLeft = -2.5f;
-    private float bumperRight = 2.5f;
-
-    public bool gameRunning = false;
-    public bool gameOver = false;
-
-    [SerializeField] int jumpCounter;
+    [SerializeField] public int jumpCounter;
     [SerializeField] TMP_Text jumpDisplay;
 
     private void Start() {
+        gameController = FindObjectOfType<GameController>();
         rb = GetComponent<Rigidbody2D>();
+        FreezePlayer();
         cam = Camera.main;
         audio = GetComponent<AudioSource>();
         playerData = FindObjectOfType<PlayerData>();
-        timer = GetComponent<Timer>();
-        level = playerData.currentLevelData;
     }
 
     private void Update() {
-        if (gameRunning) {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            transform.Translate(Vector2.right * moveSpeed * horizontalInput * Time.deltaTime);
-
-            if (transform.position.x < bumperLeft) {
-                transform.position = new Vector2(bumperLeft, transform.position.y);
-            }
-
-            if (transform.position.x > bumperRight) {
-                transform.position = new Vector2(bumperRight, transform.position.y);
-            }
-
+        if (gameController.gameRunning) {
+            MovePlayer();
             CheckDie();
+        }
+    }
 
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                print("blow up");
-                enemyHitParticles.Play();
-            }
+    private void MovePlayer() {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector2.right * moveSpeed * horizontalInput * Time.deltaTime);
+
+        if (transform.position.x < bumperLeft) {
+            transform.position = new Vector2(bumperLeft, transform.position.y);
+        }
+
+        if (transform.position.x > bumperRight) {
+            transform.position = new Vector2(bumperRight, transform.position.y);
         }
     }
 
     void CheckDie() {
-        if (gameRunning) {
+        if (gameController.gameRunning) {
             if (transform.position.y < (cam.transform.position.y - 5.5)) {
-                Lose();
+                gameController.Lose();
             }
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy")) {
-            Destroy(collision.gameObject);
-            TakeDamage();
-        }
-
-        else if (collision.gameObject.CompareTag("Obstacle")) {
-            TakeDamage();
         }
     }
 
@@ -105,12 +83,14 @@ public class PlayerController : MonoBehaviour {
 
         if (layerName == "Bounce") {
             if (rb.velocity.y < 0) { // Make sure its moving down first
-                if (gameRunning) Bounce();
+                if (gameController.gameRunning) Bounce();
             }
         }
 
         else if (layerName == "Win") {
-            Win();
+            if (rb.velocity.y < 0) {
+                gameController.Win();
+            }
         }
 
         else if (layerName == "Enemy") {
@@ -119,14 +99,12 @@ public class PlayerController : MonoBehaviour {
                 ParticleSystem shieldFX = GetComponentInChildren<ParticleSystem>(); // getting ahold of the wrong particle system, need to reference this better
                 Destroy(shieldFX.gameObject);
                 enemyHitParticles.Play();
-            }
-            else {
+            } else {
                 Instantiate(enemyHitParticles, transform);
                 TakeDamage();
             }
         }
     }
-
 
     void Bounce() {
         audio.PlayOneShot(bounceSound);
@@ -145,60 +123,16 @@ public class PlayerController : MonoBehaviour {
         health--;
         healthBar.value = health;
         if (health <= 0) {
-            Lose();
+            gameController.Lose();
         }
     }
 
-    void Lose() {
-        loseScreen.SetActive(true);
-        gameRunning = false;
-        audio.PlayOneShot(loseSound);
+    public void FreezePlayer() {
+        rb.gravityScale = 0;
+        rb.velocity = Vector2.zero;
     }
 
-    void Win() {
-        winScreen.SetActive(true);
-        gameRunning = false;
-        audio.PlayOneShot(winSound);
-        playerData.totalJumps += jumpCounter;
-        
-        int levelToUnlock = playerData.currentLevelIndex + 1;
-        if (!playerData.world1Unlocks.Contains(levelToUnlock)) {
-            playerData.world1Unlocks.Add(levelToUnlock);
-        }
-
-        int wonStars = 1;
-
-        // Win Conditionals - TODO break into separate methods
-        if (level.timer1) {
-            if (timer.timer < level.timer1Time) {
-                print("earned another star for beating timer1");
-                wonStars++;
-            }
-        }
-
-        if (level.timer2) {
-            if (timer.timer < level.timer2Time) {
-                print("earned another star for beating timer2");
-                wonStars++;
-            }
-        }
-
-        if (level.maxBounces) {
-            if (bounceAmount < level.maxBounceCount) {
-                wonStars++;
-            }
-        }
-
-        // Add or update stars in storage
-        if (playerData.world1Stars[playerData.currentLevelIndex] < wonStars) {
-            print("earned some new stars tally em up - "+wonStars);
-            int newStars = wonStars - playerData.world1Stars[playerData.currentLevelIndex];
-            playerData.totalStarsEarned += newStars;
-        }
-
-        playerData.world1Stars[playerData.currentLevelIndex] = wonStars;
-
-        playerData.GetComponent<Save>().SaveGame();
+    public void UnFreezePlayer() {
+        rb.gravityScale = 1;
     }
-
 }

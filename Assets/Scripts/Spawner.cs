@@ -8,14 +8,16 @@ public class Spawner : MonoBehaviour {
     [SerializeField] float spawnStart;
     [SerializeField] float spawnRepeat;
     PlayerController pc;
+    GameController gameController;
 
     private void Start() {
         pc = FindObjectOfType<PlayerController>();
+        gameController = FindObjectOfType<GameController>();
         InvokeRepeating("Spawn", spawnStart, spawnRepeat);
     }
 
     void Spawn() {
-        if (!pc.gameOver) { 
+        if (gameController.gameRunning) { 
             Instantiate(spawnItem, transform.position, spawnItem.transform.rotation);
         }
     }

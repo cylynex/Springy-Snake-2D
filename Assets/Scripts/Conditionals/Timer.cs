@@ -8,13 +8,16 @@ public class Timer : MonoBehaviour {
 
     public float timer;
     PlayerController playerController;
+    GameController gameController;
+
     [SerializeField] TMP_Text timerDisplay;
     private void Awake() {
         playerController = FindObjectOfType<PlayerController>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     private void Update() {
-        if (playerController.gameRunning) {
+        if (gameController.gameRunning) {
             timer += Time.deltaTime;
             timerDisplay.text = "Timer: "+Mathf.RoundToInt(timer).ToString();
         }

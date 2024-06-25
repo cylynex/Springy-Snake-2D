@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class GameStartPanel : MonoBehaviour {
 
     [SerializeField] PlayerController playerController;
     [SerializeField] Level currentLevel;
     PlayerData playerData;
+    [SerializeField] CountdownTimer countdownTimer;
+    GameController gameController;
 
     [Header("UI")]
     [SerializeField] TMP_Text star1Text;
@@ -18,11 +21,11 @@ public class GameStartPanel : MonoBehaviour {
     [SerializeField] GameObject powerUpPanel;
 
     private void Awake() {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         playerController = FindObjectOfType<PlayerController>();
         playerData = FindObjectOfType<PlayerData>();
         currentLevel = playerData.currentLevelData;
-        
+        gameController = FindObjectOfType<GameController>();
     }
 
     private void Start() {
@@ -59,9 +62,11 @@ public class GameStartPanel : MonoBehaviour {
     }
 
     public void StartGame() {
-        Time.timeScale = 1;
-        playerController.gameRunning = true;
+        //Time.timeScale = 1;
+        countdownTimer.gameObject.SetActive(true);
+        countdownTimer.isStarted = true;
         powerUpPanel.SetActive(false);
         gameObject.SetActive(false);
     }
+
 }

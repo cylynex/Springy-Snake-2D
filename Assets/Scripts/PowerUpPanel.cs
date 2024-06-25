@@ -14,6 +14,7 @@ public class PowerUpPanel : MonoBehaviour {
         playerController = FindObjectOfType<PlayerController>();
 
         // check for available power ups and present button for what they have
+        // TODO - should be a visual or something here when they select a powerup
         if (playerData.powerUpShield1 > 0) {
             shield1Button.SetActive(true);
         }
@@ -22,7 +23,6 @@ public class PowerUpPanel : MonoBehaviour {
     public void ActivateShield1() {
         playerController.shield1 = true;
         Instantiate(shield1FX, playerController.gameObject.transform);
-        // TODO - This is commented out just for testing.  Using the shield should consume it
-        //playerData.powerUpShield1 -= 1;  
+        playerData.powerUpShield1 -= 1;  
     }
 }

@@ -23,7 +23,6 @@ public class LevelLockManager : MonoBehaviour {
             thisButton.onClick.AddListener(() => ChooseLevel(thisIndex, world.levels[thisIndex]));
 
             // Setup the stars
-            print("stars for this level : " + playerData.world1Stars[thisIndex]);
             switch (playerData.world1Stars[thisIndex]) {
                 case 0: currentLevel.GetComponent<LevelSelector>().SetStar(0); break;
                 case 1: currentLevel.GetComponent<LevelSelector>().SetStar(1); break;
@@ -31,11 +30,9 @@ public class LevelLockManager : MonoBehaviour {
                 case 3: currentLevel.GetComponent<LevelSelector>().SetStar(3); break;
                 default: Debug.Log("star error"); break;
             }
-
         }
 
-        // Setup the locks
-        
+        // Setup the locks        
         int levelIndex = 0;
 
         foreach(Transform levelSelector in transform) {
@@ -43,16 +40,13 @@ public class LevelLockManager : MonoBehaviour {
                 if (playerData.world1Unlocks.Contains(levelIndex)) {
                     // Disable lock icon and enable button
                     levelSelector.GetChild(2).gameObject.SetActive(false);
-                    //print("level " + levelIndex + " is already unlocked.");
                 }
                 else {
                     // Leave in default, locked state, remove button
-                    //print("level " + levelIndex + " is not unlocked yet");
                     levelSelector.GetChild(3).gameObject.SetActive(false);
                 }
             } else {
                 // Disable lock icon and enable button
-                //print("level " + levelIndex + " is already unlocked.");
                 levelSelector.GetChild(2).gameObject.SetActive(false);
             }
 
