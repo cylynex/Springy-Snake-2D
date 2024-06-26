@@ -872,7 +872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SPRINGY SNAKE
+  m_text: SPLOINKY SNAKE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
   m_sharedMaterial: {fileID: 4041514310467126790, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v.13
+  m_text: v.14
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}
   m_sharedMaterial: {fileID: 4041514310467126790, guid: 39638cfbd156f0947bc721ffa48b5ac6, type: 2}

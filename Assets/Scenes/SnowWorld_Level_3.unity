@@ -407,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 592726981}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.55, z: 0}
   m_LocalScale: {x: 1.3330921, y: 1.3330921, z: 1.3330921}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1052,9 +1052,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5535818839084374304, guid: 6ddad285a798d3b4aa87428a36f8cf62, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0006203521
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535818839084374304, guid: 6ddad285a798d3b4aa87428a36f8cf62, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535818839084374304, guid: 6ddad285a798d3b4aa87428a36f8cf62, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.929
+      objectReference: {fileID: 0}
     - target: {fileID: 5983557000411765110, guid: 6ddad285a798d3b4aa87428a36f8cf62, type: 3}
       propertyPath: m_Name
       value: Essentials
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720297853323998497, guid: 6ddad285a798d3b4aa87428a36f8cf62, type: 3}
+      propertyPath: isAntiGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

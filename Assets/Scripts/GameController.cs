@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour {
     [Header("UI")]
     [SerializeField] GameObject loseScreen;
     [SerializeField] GameObject winScreen;
+    [SerializeField] TMP_Text winResults;
 
     [Header("Sound")]
     [SerializeField] AudioSource audio;
@@ -75,6 +77,8 @@ public class GameController : MonoBehaviour {
                 wonStars++;
             }
         }
+
+        winResults.text = "You completed the map with a " + wonStars + " stars victory.";
 
         // Add or update stars in storage
         if (playerData.world1Stars[playerData.currentLevelIndex] < wonStars) {

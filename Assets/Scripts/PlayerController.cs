@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Sound")]
     [SerializeField] AudioSource audio;
     [SerializeField] AudioClip bounceSound;
+    [SerializeField] AudioClip hitSound;
 
     [Header("Health")]
     [SerializeField] int health = 3;
@@ -98,11 +99,12 @@ public class PlayerController : MonoBehaviour {
                 shield1 = false;
                 ParticleSystem shieldFX = GetComponentInChildren<ParticleSystem>(); // getting ahold of the wrong particle system, need to reference this better
                 Destroy(shieldFX.gameObject);
-                enemyHitParticles.Play();
             } else {
-                Instantiate(enemyHitParticles, transform);
                 TakeDamage();
             }
+
+            Instantiate(enemyHitParticles, transform);
+            audio.PlayOneShot(hitSound);
         }
     }
 
@@ -116,7 +118,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateJumpCounter() {
         jumpCounter++;
-        jumpDisplay.text = "Jumps: "+jumpCounter.ToString();
+        jumpDisplay.text = jumpCounter.ToString();
     }
 
     void TakeDamage() {

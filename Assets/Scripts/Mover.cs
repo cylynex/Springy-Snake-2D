@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour {
 
-    [SerializeField] float moveSpeed = 4f;
+    [SerializeField] public float moveSpeed = 4f;
     [SerializeField] bool rightToLeft = false;
 
     private void Update() {

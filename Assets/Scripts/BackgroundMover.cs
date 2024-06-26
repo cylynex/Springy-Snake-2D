@@ -5,9 +5,16 @@ using UnityEngine;
 public class BackgroundMover : MonoBehaviour {
 
     [SerializeField] float moveSpeed = 0.2f;
+    GameController gameController;
+
+    private void Start() {
+        gameController = FindObjectOfType<GameController>();
+    }
 
     private void Update() {
-        transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+        if (gameController.gameRunning) { 
+            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+        }
     }
 
 }

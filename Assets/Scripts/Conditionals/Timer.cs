@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour {
     private void Update() {
         if (gameController.gameRunning) {
             timer += Time.deltaTime;
-            timerDisplay.text = "Timer: "+Mathf.RoundToInt(timer).ToString();
+            timerDisplay.text = Mathf.RoundToInt(timer).ToString();
         }
     }
 

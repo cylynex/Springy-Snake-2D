@@ -6,6 +6,7 @@ public class CameraMove : MonoBehaviour {
 
     [SerializeField] float moveSpeed = 1f;
     GameController gameController;
+    [SerializeField] bool isAntiGravity = false;
 
     private void Start() {
         gameController = FindObjectOfType<GameController>();
@@ -13,7 +14,11 @@ public class CameraMove : MonoBehaviour {
 
     private void Update() {
         if (gameController.gameRunning) {
-            transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+            if (!isAntiGravity) {
+                transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+            } else {
+                transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+            }
         }
     }
 

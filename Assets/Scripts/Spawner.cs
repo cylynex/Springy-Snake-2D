@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Spawner : MonoBehaviour {
 
     [SerializeField] GameObject spawnItem;
     [SerializeField] float spawnStart;
     [SerializeField] float spawnRepeat;
+    [SerializeField] float moveSpeed = 4f;
     PlayerController pc;
     GameController gameController;
 
@@ -18,7 +20,8 @@ public class Spawner : MonoBehaviour {
 
     void Spawn() {
         if (gameController.gameRunning) { 
-            Instantiate(spawnItem, transform.position, spawnItem.transform.rotation);
+            GameObject thisBird = Instantiate(spawnItem, transform.position, spawnItem.transform.rotation);
+            thisBird.GetComponent<Mover>().moveSpeed = moveSpeed;
         }
     }
 
